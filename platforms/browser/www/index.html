@@ -26,12 +26,19 @@
         function iabClose(event) {
             iabRef.removeEventListener('loadstop', replaceHeaderImage);
             iabRef.removeEventListener('exit', iabClose);
+            navigator.app.exitApp();
+            /*
+             window.open = cordova.InAppBrowser.open;
+            var ref = window.open('http://qistas.com', '_blank', 'location=no');
+            ref.addEventListener('exit', function () {
+                navigator.app.exitApp();
+             */
         }
 
         // device APIs are available
         //
         function onDeviceReady() {
-            iabRef = window.open('http://qistas.com', '_blank', 'location=yes');
+            iabRef = window.open('http://qistas.com', '_blank', 'location=no,toolbar=no');
             iabRef.addEventListener('loadstop', replaceHeaderImage);
             iabRef.addEventListener('exit', iabClose);
         }
